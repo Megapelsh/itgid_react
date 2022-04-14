@@ -4,24 +4,30 @@ function PlaceholderPostHook() {
 
     const [posts, setPosts] = useState([])
 
-    useEffect( () => {
-        console.log('data')
-        
+    useEffect( () => {        
         let url = 'https://jsonplaceholder.typicode.com/users/1/posts'
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 setPosts(data)
             })
     }, [])
     
 
   return (
-    <section>
-        <h2> Номер поста. Заголовок</h2>
-        <p>Тело поста</p>
-    </section>
+    
+
+    <div>
+      <h1>Posts</h1>
+        {posts.map((el, index) => (
+          <section key={el.id}>
+              <h2>{index+1}. {el.title}</h2>
+              <p>{el.body}</p>
+          </section>
+        ))}
+    </div>
+
+    
   )
 }
 
