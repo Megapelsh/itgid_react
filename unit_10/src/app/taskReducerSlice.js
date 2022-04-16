@@ -9,7 +9,7 @@ export const taskReducerSlice = createSlice({
     reducers: {
         add: (state, data) => {
             state.value += +data.payload
-            // console.log('state value is ' + state.value)
+            // console.log(data)
         },
         minus: (state, data) => {
             state.value -= + data.payload
@@ -19,11 +19,14 @@ export const taskReducerSlice = createSlice({
         },
         division: (state, data) => {
             state.value /= +data.payload
+        },
+        newText: (state, data) => {
+            state.text = data.payload
         }
     },
 })
 
-export const {add, minus, multi, division} = taskReducerSlice.actions
+export const {add, minus, multi, division, newText} = taskReducerSlice.actions
 
 export const selectValue = state => state.taskReduser.value
 export const selectText = state => state.taskReduser.text
