@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React , {useState} from 'react'
 
 function CommentHook() {
 
@@ -6,35 +6,42 @@ function CommentHook() {
 
     function selectHandler (event) {
         let postID = event.target.value
-        let url = `https://jsonplaceholder.typicode.com/posts/${postID}/comments`
+        // let url = `https://jsonplaceholder.typicode.com/posts/${postID}/comments`
+        let url = `https://jsonplaceholder.typicode.com/posts/2/comments`
+        console.log(url)
         fetch(url)
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data)
-            setPosts(data)
-        })
+            .then(response => response.json)
+            .then(data => {
+                console.log(data)
+                setPosts(data)
+                console.log(posts)
+            })
     }
 
-    return (
+  return (
+      <div>
+        <select name="variants" id="" onChange={selectHandler}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
         <div>
-            <p>Choose post ID:</p>
-            <select onChange={selectHandler}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            <div>
-                <h1>Comments</h1>
-                {posts.map((el, index) => (
-                    <section key={el.id}>
-                        <p><b>{index + 1}. {el.email}</b></p>
-                        <p>{el.body}</p>
-                    </section>
-                ))}
-            </div>
+            <h1>Posts</h1>
+            {posts.map((el, index) => (
+                <section key={el.id}>
+                    <h2>{index+1}. {el.title}</h2>
+                    <p>{el.body}</p>
+                </section>
+            ))}
         </div>
-    )
+
+      </div>
+    
+
+
+  )
 }
 
 export default CommentHook

@@ -1,11 +1,19 @@
 import './App.css';
 
-import Comment2Hook from './Comment2Hook';
+import PlaceholderPost from './PlaceholderPost';
+import Comment from './Comment';
+import Comment2 from './Comment2';
+
+import PlaceholderPostHook from './PlaceholderPostHook';
+import CommentHook from './CommentHook';
 
 function App() {
   return (
     <>
-      <Comment2Hook />
+      {/* <PlaceholderPostHook /> */}
+      <CommentHook />
+      {/* <Comment/> */}
+      {/* <Comment2/> */}
     </>
   );
 }
